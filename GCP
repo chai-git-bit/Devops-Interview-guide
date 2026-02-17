@@ -1,0 +1,409 @@
+
+## ☁️ Basics of Google Cloud Platform (GCP)
+
+### 1. What is GCP?
+
+**Answer:**
+GCP is Google’s cloud computing platform that provides services for computing, storage, networking, databases, analytics, AI/ML, and DevOps. It runs on the same infrastructure Google uses for products like Gmail and YouTube.
+
+---
+
+### 2. What are the main components of GCP?
+
+**Answer:**
+
+* **Compute** – Compute Engine, GKE, Cloud Run, App Engine
+* **Storage** – Cloud Storage, Persistent Disk
+* **Databases** – Cloud SQL, Firestore, Bigtable, Spanner
+* **Networking** – VPC, Load Balancer, Cloud DNS
+* **DevOps** – Cloud Build, Artifact Registry, Cloud Deploy
+* **Security** – IAM, KMS, Secret Manager
+
+---
+
+### 3. What is a Project in GCP?
+
+**Answer:**
+A project is the **basic unit of resource organization** in GCP. All resources (VMs, buckets, APIs) belong to a project and are billed at the project level.
+
+---
+
+### 4. Explain Regions and Zones.
+
+**Answer:**
+
+* **Region** → Geographic location (e.g., australia-southeast1)
+* **Zone** → Isolated location within a region (e.g., australia-southeast1-a)
+  Using multiple zones improves availability.
+
+---
+
+## 🖥️ Compute Services
+
+### 5. What is Compute Engine?
+
+**Answer:**
+Compute Engine provides **virtual machines (VMs)** with full control over OS, machine type, disks, and networking.
+
+---
+
+### 6. Difference between Compute Engine and App Engine?
+
+| Compute Engine     | App Engine       |
+| ------------------ | ---------------- |
+| VM-based           | PaaS             |
+| Full OS control    | No OS management |
+| You manage scaling | Auto-scaling     |
+
+---
+
+### 7. What is Cloud Run?
+
+**Answer:**
+Cloud Run is a **serverless container platform** that runs stateless containers and scales automatically based on traffic. You only pay when requests are handled.
+
+---
+
+### 8. What is GKE?
+
+**Answer:**
+Google Kubernetes Engine (GKE) is a **managed Kubernetes service** that simplifies container orchestration, scaling, and upgrades.
+
+---
+
+## 📦 Storage & Databases
+
+### 9. What is Cloud Storage?
+
+**Answer:**
+Object storage for unstructured data like images, videos, backups, and logs.
+
+**Storage classes:**
+
+* Standard
+* Nearline
+* Coldline
+* Archive
+
+---
+
+### 10. Difference between Cloud SQL and Cloud Spanner?
+
+| Cloud SQL              | Cloud Spanner         |
+| ---------------------- | --------------------- |
+| Managed MySQL/Postgres | Global distributed DB |
+| Regional               | Multi-region          |
+| Vertical scaling       | Horizontal scaling    |
+
+---
+
+### 11. What is Firestore?
+
+**Answer:**
+A **NoSQL document database** designed for real-time applications with automatic scaling.
+
+---
+
+## 🌐 Networking
+
+### 12. What is a VPC?
+
+**Answer:**
+A Virtual Private Cloud is a **global private network** in GCP used to connect resources securely.
+
+---
+
+### 13. What is the difference between Security Groups and Firewall Rules?
+
+**Answer:**
+GCP uses **Firewall Rules**, not security groups. Firewall rules are applied at the **VPC level** and control inbound/outbound traffic.
+
+---
+
+### 14. What types of Load Balancers exist in GCP?
+
+**Answer:**
+
+* HTTP(S) Load Balancer
+* TCP/UDP Load Balancer
+* Internal Load Balancer
+
+---
+
+## 🔐 Security & IAM
+
+### 15. What is IAM?
+
+**Answer:**
+IAM (Identity and Access Management) controls **who can do what on which resource** using:
+
+* Members
+* Roles
+* Permissions
+
+---
+
+### 16. Difference between Primitive, Predefined, and Custom Roles?
+
+* **Primitive** – Owner, Editor, Viewer
+* **Predefined** – Service-specific roles
+* **Custom** – User-defined permissions
+
+---
+
+### 17. How do you secure secrets in GCP?
+
+**Answer:**
+
+* Secret Manager
+* IAM policies
+* KMS for encryption
+* Avoid hardcoding secrets
+
+---
+
+## 🚀 DevOps & CI/CD
+
+### 18. What is Cloud Build?
+
+**Answer:**
+Cloud Build is a **CI/CD service** that builds, tests, and deploys code using YAML pipelines.
+
+---
+
+### 19. What is Artifact Registry?
+
+**Answer:**
+A managed service to store **Docker images, Helm charts, and language packages**.
+
+---
+
+### 20. How does GitOps work in GCP?
+
+**Answer:**
+Infrastructure and application configs are stored in Git. Changes are deployed automatically using tools like:
+
+* Terraform
+* Config Sync
+* ArgoCD / Flux
+
+---
+
+## 📊 Monitoring & Logging
+
+### 21. What is Cloud Monitoring?
+
+**Answer:**
+Provides metrics, dashboards, alerts, and uptime checks for GCP resources.
+
+---
+
+### 22. What is Cloud Logging?
+
+**Answer:**
+Centralized logging service for application logs, system logs, and audit logs.
+
+---
+
+## ⚙️ Terraform & IaC
+
+### 23. Why use Terraform with GCP?
+
+**Answer:**
+
+* Infrastructure as Code
+* Version control
+* Repeatable deployments
+* Supports multi-cloud
+
+---
+
+### 24. What is a Service Account?
+
+**Answer:**
+A service account is a **non-human identity** used by applications or services to authenticate with GCP.
+
+---
+
+## 🧠 Advanced / Scenario-Based
+
+### 25. How would you design a highly available application in GCP?
+
+**Answer:**
+
+* Multi-zone deployment
+* Managed Instance Groups
+* Load Balancer
+* Cloud SQL with replicas
+* Monitoring & alerts
+
+---
+
+### 26. How do you reduce GCP costs?
+
+**Answer:**
+
+* Right-size VMs
+* Use committed use discounts
+* Use autoscaling
+* Use lower-cost storage classes
+* Monitor billing alerts
+
+---
+
+### 27. Difference between Cloud Run and GKE?
+
+**Answer:**
+Use **Cloud Run** for simple stateless apps.
+Use **GKE** when you need full Kubernetes control.
+
+---
+
+## 🏗️ Scenario 1: High Availability Web Application
+
+### **Question:**
+
+How would you design a highly available web application in GCP?
+
+**Answer (Interview-Ready):**
+
+> I would deploy the application using **Managed Instance Groups across multiple zones** within a region. Traffic would be routed through an **HTTP(S) Load Balancer**.
+> For the database, I’d use **Cloud SQL with a read replica** or **Cloud Spanner** if global scale is needed.
+> Static assets would be stored in **Cloud Storage** and monitoring handled using **Cloud Monitoring and Logging**.
+> This setup ensures fault tolerance, auto-healing, and horizontal scalability.
+
+---
+
+## 🚀 Scenario 2: Zero-Downtime Deployment
+
+### **Question:**
+
+How do you perform zero-downtime deployments in GCP?
+
+**Answer:**
+
+> I use **rolling updates** with Managed Instance Groups or **rolling deployments in GKE**.
+> For critical systems, I prefer **blue-green deployments** where a new version is deployed alongside the old one, tested, and traffic is switched only after validation.
+> Health checks ensure unhealthy instances are not served traffic.
+
+---
+
+## 📦 Scenario 3: Migrating On-Prem Applications to GCP
+
+### **Question:**
+
+How would you migrate an on-prem application to GCP?
+
+**Answer:**
+
+> First, I assess the application for **rehost, replatform, or refactor**.
+> I establish connectivity using **VPN or Interconnect**.
+> Compute workloads are migrated to **Compute Engine or GKE**, and databases to **Cloud SQL**.
+> I validate performance, security, and cost before decommissioning on-prem resources.
+
+---
+
+## 🔐 Scenario 4: Securing GCP Resources
+
+### **Question:**
+
+How do you secure applications and infrastructure in GCP?
+
+**Answer:**
+
+> I follow the **principle of least privilege** using **IAM roles**.
+> Secrets are stored in **Secret Manager**, not in code.
+> Network access is restricted using **VPC firewall rules** and **private IPs**.
+> Audit logs are enabled to track access and changes.
+
+---
+
+## 💰 Scenario 5: Cost Optimization Problem
+
+### **Question:**
+
+Your GCP bill suddenly spikes. How do you handle it?
+
+**Answer:**
+
+> I start by reviewing **Billing reports** to identify the services causing the spike.
+> I check for over-provisioned VMs and enable **autoscaling** where possible.
+> For steady workloads, I apply **Committed Use Discounts**.
+> I also set **budget alerts** to avoid future surprises.
+
+---
+
+## ⚙️ Scenario 6: CI/CD Pipeline in GCP
+
+### **Question:**
+
+How do you implement CI/CD in GCP?
+
+**Answer:**
+
+> I use **Cloud Build** triggered by Git commits.
+> The pipeline builds the Docker image, stores it in **Artifact Registry**, and deploys it to **GKE or Cloud Run**.
+> Infrastructure changes are managed using **Terraform with GitOps**, ensuring version control and rollback capability.
+
+---
+
+## 🔥 Scenario 7: Production Outage
+
+### **Question:**
+
+A production service goes down. What steps do you take?
+
+**Answer:**
+
+> First, I check **Cloud Monitoring alerts** to identify the scope of impact.
+> I analyze logs using **Cloud Logging** to find the root cause.
+> If needed, I roll back to the previous stable version.
+> After resolution, I perform a **post-incident review** and add monitoring to prevent recurrence.
+
+---
+
+## ☁️ Scenario 8: Choosing Cloud Run vs GKE
+
+### **Question:**
+
+When would you use Cloud Run instead of GKE?
+
+**Answer:**
+
+> I use **Cloud Run** for stateless applications with unpredictable traffic because it scales to zero and reduces cost.
+> I use **GKE** when I need advanced Kubernetes features like custom networking, sidecars, or persistent workloads.
+
+---
+
+## 🧠 Scenario 9: Terraform Failure
+
+### **Question:**
+
+Terraform apply fails in production. What do you do?
+
+**Answer:**
+
+> I review the Terraform error logs and state file.
+> I avoid manual changes and fix the configuration in Git.
+> If state is corrupted, I restore it from a backup.
+> Once fixed, I re-apply and verify resources.
+
+---
+
+## 🏁 Scenario 10: Landing Zone Setup
+
+### **Question:**
+
+How do you set up a secure GCP landing zone?
+
+**Answer:**
+
+> I create separate projects for **network, security, and workloads**.
+> Shared VPC is used for centralized networking.
+> IAM roles, logging, and billing are centrally managed.
+> Terraform is used to standardize deployments.
+
+---
+
+
+
