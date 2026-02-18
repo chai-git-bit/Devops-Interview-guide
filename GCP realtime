@@ -142,3 +142,106 @@ If they ask **“Why you?”**, say:
 > I focus on secure, scalable solutions, clear communication with stakeholders, and delivering long-term value rather than quick fixes.
 
 ---
+
+## 🌍 How do you expose an application to the internet in GCP?
+
+There are **multiple valid ways**, depending on **where your app is running**.
+
+---
+
+## 🔹 OPTION 1: Expose a VM-based App (Compute Engine)
+
+### Steps (Real-world):
+
+1. Deploy app on a **Compute Engine VM**
+2. Assign an **External IP address**
+3. Create **VPC firewall rules** (allow 80/443)
+4. Ensure app listens on correct port
+5. (Optional) Put a Load Balancer in front
+
+### Interview Answer:
+
+> I expose a VM-based application by assigning an **external IP** to the Compute Engine instance and creating **firewall rules** to allow inbound traffic on required ports like 80 or 443.
+> For production, I place the VM behind an **HTTP(S) Load Balancer** for scalability and security.
+
+---
+
+## 🔹 OPTION 2: Expose a Container App Using Cloud Run (Best Practice)
+
+### Steps:
+
+1. Deploy container to **Cloud Run**
+2. Set **ingress = allow all**
+3. Allow **unauthenticated access**
+4. GCP automatically exposes a public HTTPS URL
+
+### Interview Answer:
+
+> For serverless container workloads, I deploy the app on **Cloud Run** and allow unauthenticated access.
+> GCP automatically provides a **secure public HTTPS endpoint**, handles scaling, and removes the need to manage infrastructure.
+
+---
+
+## 🔹 OPTION 3: Expose an App on GKE (Kubernetes)
+
+### Ways:
+
+* **Service type LoadBalancer**
+* **Ingress with HTTP(S) Load Balancer** (recommended)
+
+### Interview Answer:
+
+> In GKE, I expose applications using a **Kubernetes Ingress** backed by a **GCP HTTP(S) Load Balancer**.
+> This provides SSL termination, path-based routing, and auto-scaling across multiple pods.
+
+---
+
+## 🔹 OPTION 4: Expose App Using GCP Load Balancer (Production Grade)
+
+### Architecture:
+
+* Public **HTTP(S) Load Balancer**
+* Backend: MIGs / GKE / Cloud Run
+* SSL cert via Google-managed certificates
+
+### Interview Answer:
+
+> For production systems, I expose applications using a **global HTTP(S) Load Balancer**.
+> It provides DDoS protection, SSL termination, health checks, and routes traffic to healthy backends.
+
+---
+
+## 🔹 OPTION 5: Secure Exposure (Private + Controlled Access)
+
+### Used when:
+
+* Internal apps
+* Admin portals
+* No public access
+
+### Interview Answer:
+
+> If the app should not be fully public, I expose it via **Identity-Aware Proxy (IAP)**, which authenticates users before granting access, without exposing the service directly to the internet.
+
+---
+
+## 🧠 Interview Comparison Summary
+
+| Platform       | Best Exposure Method        |
+| -------------- | --------------------------- |
+| Compute Engine | External IP + Load Balancer |
+| Cloud Run      | Auto HTTPS public URL       |
+| GKE            | Ingress + HTTP(S) LB        |
+| Internal App   | IAP or Internal LB          |
+
+---
+
+## ⭐ PERFECT FINAL INTERVIEW ANSWER (MEMORISE THIS)
+
+> *To expose an application to the internet in GCP, I choose the method based on where the app is running.
+> For VM-based apps, I use an external IP with firewall rules or a load balancer.
+> For containers, I prefer Cloud Run or GKE with Ingress backed by an HTTP(S) Load Balancer.
+> For secure access, I use Identity-Aware Proxy.
+> In production, I always prioritize load balancers, HTTPS, and least-privilege access.*
+
+
