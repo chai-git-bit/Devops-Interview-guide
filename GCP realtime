@@ -1,0 +1,153 @@
+
+## 1️⃣ GCP Production Incident – Pod CrashLoopBackOff
+
+**Q:**
+A production application on **GKE** suddenly goes into `CrashLoopBackOff`. What do you do?
+
+**A (Real-time approach):**
+
+> First, I check the pod logs using `kubectl logs` to identify application-level errors.
+> Then I describe the pod to look for configuration or resource issues like failed liveness probes or OOMKills.
+> I verify recent changes through GitOps history or CI/CD deployments.
+> If needed, I roll back to the last stable version, communicate status to stakeholders, and later perform RCA to prevent recurrence.
+
+---
+
+## 2️⃣ Terraform Drift in GCP
+
+**Q:**
+What is Terraform drift and how do you handle it?
+
+**A:**
+
+> Terraform drift occurs when resources in GCP are changed manually outside Terraform.
+> I detect drift using `terraform plan`.
+> In regulated environments, I restrict console access, enforce IaC-only changes via GitOps, and regularly reconcile state.
+> If drift is legitimate, I update the Terraform code to match reality and reapply.
+
+---
+
+## 3️⃣ Secure Landing Zone Design
+
+**Q:**
+How do you design a secure GCP landing zone?
+
+**A:**
+
+> I use a multi-project structure with separate projects for networking, security, and workloads.
+> I enforce org policies, IAM least privilege, VPC Service Controls, private Google access, and centralized logging.
+> Networking is done using shared VPCs with controlled subnet access.
+> Everything is provisioned via Terraform to ensure consistency and auditability.
+
+---
+
+## 4️⃣ Cloud Run vs GKE – Real Choice
+
+**Q:**
+When would you choose Cloud Run over GKE?
+
+**A:**
+
+> I choose Cloud Run for stateless, event-driven workloads where I want minimal ops, fast scaling, and per-request billing.
+> GKE is better when I need advanced networking, sidecars, stateful services, or fine-grained control.
+> In practice, I often use both — Cloud Run for APIs and GKE for core platforms.
+
+---
+
+## 5️⃣ CI/CD Pipeline Failure at Deployment Stage
+
+**Q:**
+A pipeline fails while deploying to GCP. What do you check?
+
+**A:**
+
+> I check the pipeline logs to identify whether it’s authentication, permissions, or resource quota related.
+> Then I validate service account roles, workload identity bindings, and Terraform state consistency.
+> If it’s environment-specific, I compare configs across dev, test, and prod to find drift.
+
+---
+
+## 6️⃣ IAM Issue – Access Denied in Production
+
+**Q:**
+A service suddenly gets `403 Access Denied`. What’s your approach?
+
+**A:**
+
+> I identify which service account is failing and verify recent IAM changes.
+> I check project-level and resource-level permissions.
+> I avoid granting owner roles and instead assign minimum required predefined or custom roles.
+> After fixing access, I add monitoring and alerts for IAM changes.
+
+---
+
+## 7️⃣ GCP Networking – Private & Secure Design
+
+**Q:**
+How do you design secure networking in GCP?
+
+**A:**
+
+> I use private subnets with no public IPs, Cloud NAT for outbound traffic, and internal load balancers.
+> Firewall rules are restrictive by default.
+> DNS is managed centrally, and sensitive services are protected using VPC Service Controls and private endpoints.
+
+---
+
+## 8️⃣ Migration Scenario – On-Prem to GCP
+
+**Q:**
+How would you migrate an on-prem application to GCP?
+
+**A:**
+
+> I first assess dependencies, data size, latency, and security requirements.
+> I usually migrate infrastructure using Terraform, containerize applications where possible, and deploy to GKE or Cloud Run.
+> Data is migrated using Database Migration Service or Storage Transfer Service.
+> I validate performance before cutover and ensure rollback plans exist.
+
+---
+
+## 9️⃣ Observability & Monitoring
+
+**Q:**
+How do you monitor GCP workloads?
+
+**A:**
+
+> I use Cloud Monitoring and Logging with custom metrics, alerts, and dashboards.
+> For GKE, I monitor pod health, latency, error rates, and resource usage.
+> Alerts are actionable and mapped to SLAs/SLOs to reduce alert fatigue.
+
+---
+
+## 🔟 Government / Enterprise Compliance Question
+
+**Q:**
+How do you ensure compliance in GCP?
+
+**A:**
+
+> I enforce policies using Organization Policies, IAM restrictions, audit logging, and encryption by default.
+> Infrastructure is fully managed via Terraform and peer-reviewed.
+> Access is logged, changes are traceable, and environments are isolated to meet government security standards.
+
+---
+
+## Bonus: Consultant-Style Closing Answer
+
+If they ask **“Why you?”**, say:
+
+> I combine strong hands-on GCP engineering skills with a consulting mindset.
+> I focus on secure, scalable solutions, clear communication with stakeholders, and delivering long-term value rather than quick fixes.
+
+---
+
+If you want next:
+
+* ⭐ **STAR-format answers**
+* ⭐ **Mock interview Q&A**
+* ⭐ **Gov / NCS-specific GCP questions**
+* ⭐ **Whiteboard architecture questions**
+
+Just tell me what to prep next 🚀
