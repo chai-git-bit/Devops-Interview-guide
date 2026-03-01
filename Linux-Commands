@@ -1,0 +1,43 @@
+   --> ncdu: Linux command to list the files and size of the files and folders 
+             brew install ncdu
+
+   --> man find : To get the syntax of the command
+
+   --> tldr: To get command syntax and how to use it
+            brew install tldr
+            ex: tldr find
+
+   --> fzf: search for files/directory path
+            brew install fzf
+
+   --> rg file/folder name : To search for file or folder / grep 
+            brew install rg
+       ex: rg insane
+
+   --> bat: To read the file
+
+
+
+ncdu Command (NCurses Disk Usage)
+
+ncdu stands for NCurses Disk Usage.
+It is a disk usage analyzer with an interactive UI in the terminal.
+
+👉 It helps you quickly find which files/folders are taking up space on a Linux server.
+
+Very useful in production servers when disk is full
+
+
+fzf stands for Fuzzy Finder.
+
+It is a command-line search tool that lets you interactively search files, commands, history, processes, Git branches, etc.
+
+
+
+1) ncdu - folder size in order
+2) tldr  - details of more commands
+3) rg insane - To search for file or folder / grep 
+4) fzf - search for files path
+5) bat - to read the file
+
+
