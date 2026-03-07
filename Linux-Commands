@@ -40,6 +40,120 @@ It is a command-line search tool that lets you interactively search files, comma
 4) fzf - search for files path
 5) bat - to read the file
 
+====================================
+
+
+
+🛠 Advanced DevOps Linux Cheat Sheet (50 Essential Commands)
+1. System & Service Monitoring
+
+journalctl: Queries and displays logs from systemd.
+
+systemctl: Manages systemd services (start, stop, enable, status).
+
+top / htop: Real-time process monitoring.
+
+dmesg: Displays kernel-level messages and boot logs.
+
+uptime: Shows system load and time since last reboot.
+
+vmstat: Reports virtual memory, CPU, and paging activity.
+
+iostat: Monitors system input/output device loading.
+
+sar: Collects, reports, and saves system activity information.
+
+strace: Traces system calls and signals for debugging applications.
+
+lsof: Lists open files and identifies processes using them.
+
+2. Networking & Diagnostics
+ss: Investigates sockets and network statistics.
+
+netstat: Traditional tool for network statistics (legacy, but still used).
+
+dig / nslookup: DNS lookup utilities for troubleshooting.
+
+curl / wget: Transfers data to or from a server (essential for API debugging).
+
+tcpdump: Captures and inspects live network traffic.
+
+nmap: Network scanning and security auditing.
+
+mtr: Combines traceroute and ping for network path diagnostics.
+
+iptables / nftables: Manages firewall and packet filtering rules.
+
+ip addr / ip route: Modern tools for managing interfaces and routing.
+
+ifconfig: Displays or configures network interface parameters.
+
+3. File Operations & System Drift
+find: Searches for files in a directory hierarchy based on criteria like time.
+
+rsync: Syncs files and directories incrementally and precisely.
+
+grep / egrep: Searches text using patterns or regular expressions.
+
+sed: Stream editor for filtering and transforming text.
+
+awk: Advanced text processing and reporting language.
+
+xargs: Builds and executes commands from standard input.
+
+du: Estimates file space usage.
+
+df: Reports file system disk space usage.
+
+tar: Archives and compresses files.
+
+chmod / chown: Modifies file permissions and ownership (critical for security).
+
+4. Process & Security Management
+ps aux: Displays detailed information about all running processes.
+
+kill: Sends signals to terminate processes.
+
+nice / renice: Adjusts the priority of running processes.
+
+pkill / pgrep: Searches for or signals processes by name.
+
+usermod: Modifies user account settings.
+
+groupmod: Modifies group definitions.
+
+visudo: Safely edits the /etc/sudoers file.
+
+id: Displays user and group identity information.
+
+sshd: Manages the Secure Shell daemon.
+
+umask: Sets the default permissions for new files.
+
+5. Advanced System Administration
+
+screen / tmux: Terminal multiplexers for persistent sessions.
+
+crontab: Schedules recurring jobs.
+
+fdisk / parted: Manages disk partitions.
+
+mount / umount: Manages file system mounting.
+
+chroot: Changes the apparent root directory for a process.
+
+lsblk: Lists all block devices.
+
+udevadm: Device management and debugging.
+
+ldd: Displays shared library dependencies.
+
+logrotate: Manages automated rotation and compression of log files.
+
+free: Displays total, used, and free system memory.
+
+
+
 
 
 
